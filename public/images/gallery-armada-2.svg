@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#EAF4FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0EA5E9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0284C7;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="600" height="400" fill="url(#grad1)" />
+  <rect x="15" y="15" width="570" height="370" rx="20" fill="none" stroke="#DCEBFA" stroke-width="2" />
+  
+  <!-- Decorative Grid Pattern -->
+  <g opacity="0.06" stroke="#0EA5E9" stroke-width="1.5">
+    <path d="M 0,50 L 600,50 M 0,100 L 600,100 M 0,150 L 600,150 M 0,200 L 600,200 M 0,250 L 600,250 M 0,300 L 600,300 M 0,350 L 600,350" />
+    <path d="M 50,0 L 50,400 M 100,0 L 100,400 M 150,0 L 150,400 M 200,0 L 200,400 M 250,0 L 250,400 M 300,0 L 300,400 M 350,0 L 350,400 M 400,0 L 400,400 M 450,0 L 450,400 M 550,0 L 550,400" />
+  </g>
+  
+  <!-- Stylized Ambulance Icon/Drawing (APV/Standard Class) -->
+  <g transform="translate(200, 100)">
+    <!-- Glow effect -->
+    <rect x="-10" y="-10" width="220" height="150" rx="25" fill="#0EA5E9" opacity="0.05" filter="blur(10px)" />
+    <!-- Ambulance Body -->
+    <rect x="10" y="45" width="140" height="65" rx="8" fill="#FFFFFF" stroke="#0284C7" stroke-width="4" />
+    <path d="M 150,53 L 190,70 L 190,110 L 150,110 Z" fill="#FFFFFF" stroke="#0284C7" stroke-width="4" stroke-linejoin="round" />
+    <!-- Wheels -->
+    <circle cx="45" cy="115" r="16" fill="#0F172A" stroke="#FFFFFF" stroke-width="3" />
+    <circle cx="45" cy="115" r="5" fill="#DCEBFA" />
+    <circle cx="150" cy="115" r="16" fill="#0F172A" stroke="#FFFFFF" stroke-width="3" />
+    <circle cx="150" cy="115" r="5" fill="#DCEBFA" />
+    <!-- Windows -->
+    <rect x="30" y="55" width="35" height="22" rx="3" fill="#EAF4FF" stroke="#0284C7" stroke-width="2.5" />
+    <rect x="80" y="55" width="35" height="22" rx="3" fill="#EAF4FF" stroke="#0284C7" stroke-width="2.5" />
+    <path d="M 140,58 L 172,72 L 172,82 L 140,82 Z" fill="#EAF4FF" stroke="#0284C7" stroke-width="2.5" stroke-linejoin="round" />
+    <!-- Red Cross / Medical Icon -->
+    <path d="M 97,60 L 97,76 M 89,68 L 105,68" stroke="#EF4444" stroke-width="4" stroke-linecap="round" />
+    <!-- Emergency Light -->
+    <path d="M 75,37 L 85,37 L 83,45 L 77,45 Z" fill="#EF4444" />
+    <!-- Orange stripes -->
+    <path d="M 12,90 L 188,90" stroke="#F59E0B" stroke-width="5" />
+  </g>
+  
+  <!-- Text Overlay -->
+  <text x="300" y="295" font-family="'Plus Jakarta Sans', sans-serif" font-size="22" font-weight="800" fill="#0F172A" text-anchor="middle">Armada Suzuki APV Standard</text>
+  <text x="300" y="325" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="600" fill="#475569" text-anchor="middle" letter-spacing="1">UNIT TRANSPORT PASIEN - DEPOKCARE</text>
+  
+  <!-- Badge -->
+  <rect x="235" y="35" width="130" height="26" rx="13" fill="#F59E0B" />
+  <text x="300" y="52" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="#FFFFFF" text-anchor="middle" letter-spacing="1.5">ARMADA KELAS B</text>
+</svg>
