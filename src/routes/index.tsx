@@ -13,43 +13,108 @@ import {
   Users,
   HeartPulse,
   Ambulance,
-  Building2,
   MapPin,
   Star,
   ChevronDown,
   ChevronUp,
-  Activity,
   BadgeCheck,
   DollarSign,
   Instagram,
   Facebook,
   Youtube,
   Send,
-  Plus,
-  Minus,
   ArrowRight,
   CheckCircle2,
   MessageSquare,
 } from "lucide-react";
-import heroImg from "@/assets/hero-ambulance.jpg";
-import interiorImg from "@/assets/ambulance-interior.jpg";
+import heroImg from "@/assets/vvipmedis.jpeg";
+
+const SITE_URL = "https://jabodetabekcare.netlify.app/";
+const SITE_NAME = "Jabodetabek Care Ambulance";
+const SITE_IMAGE = `${SITE_URL}images/LogoBrand.png`;
+const SEO_TITLE =
+  "Jabodetabek Care Ambulance | Sewa Ambulance & Ambulan Jabodetabek 24 Jam";
+const SEO_DESCRIPTION =
+  "Jabodetabek Care Ambulance melayani sewa ambulance, ambulan, dan ambulans 24 jam untuk Jabodetabek, Depok, Bogor, Kabupaten Bogor, Jakarta, Bekasi, dan Tangerang. Tersedia medical evakuasi, transport pasien, kontrol/check up, standby event, home care, mobil jenazah VVIP, peti jenazah, dan cargo jenazah.";
+const SEO_KEYWORDS =
+  "sewa ambulance jabodetabek, ambulance jabodetabek, ambulan jabodetabek, ambulans jabodetabek, mobil ambulance jabodetabek, ambulance depok, sewa ambulance depok, ambulan depok, ambulans depok, ambulance bogor, sewa ambulance bogor, ambulance kabupaten bogor, sewa ambulance kabupaten bogor, ambulance jakarta, ambulance bekasi, ambulance tangerang, ambulance 24 jam, ambulance medical evakuasi, ambulance evakuasi medis, ambulance vvip medis, ambulance transport pasien, transport pasien, pasien kontrol, check up pasien, standby event ambulance, ambulance standby event, home care, ambulance jenazah, mobil jenazah vvip, sewa mobil jenazah, peti jenazah, cargo jenazah, pengiriman jenazah";
+const WA_PHONE_INTL = "628979455048";
+const waLink = `https://wa.me/${WA_PHONE_INTL}`;
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: SITE_NAME,
+  url: SITE_URL,
+  image: SITE_IMAGE,
+  telephone: `+${WA_PHONE_INTL}`,
+  openingHours: "Mo-Su 00:00-23:59",
+  priceRange: "$$",
+  areaServed: [
+    "Jabodetabek",
+    "Depok",
+    "Kota Bogor",
+    "Kabupaten Bogor",
+    "Jakarta",
+    "Bekasi",
+    "Tangerang",
+  ],
+  serviceType: [
+    "Ambulance medical evakuasi",
+    "Ambulan transport pasien",
+    "Ambulans 24 jam",
+    "Pasien kontrol check up",
+    "Standby event ambulance",
+    "Home care",
+    "Mobil jenazah VVIP",
+    "Peti jenazah",
+    "Cargo jenazah",
+  ],
+  description:
+    "Layanan sewa ambulance, ambulan, dan ambulans 24 jam untuk wilayah Jabodetabek, Depok, Bogor, Kabupaten Bogor, Jakarta, Bekasi, dan Tangerang. Melayani medical evakuasi, transport pasien, kontrol/check up, standby event, home care, layanan kedukaan, mobil jenazah VVIP, peti jenazah, dan cargo jenazah.",
+};
 
 export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "DepokCare-Ambulance" },
+      { title: SEO_TITLE },
       {
         name: "description",
+        content: SEO_DESCRIPTION,
+      },
+      { name: "keywords", content: SEO_KEYWORDS },
+      { property: "og:title", content: SEO_TITLE },
+      {
+        property: "og:description",
         content:
-          "Layanan ambulance 24 jam di Depok & Jabodetabek. Transport pasien, rujukan RS, standby event. Armada lengkap, tim profesional, respon cepat.",
+          "Layanan ambulance, ambulan, dan ambulans 24 jam untuk Jabodetabek, Depok, Bogor, Kabupaten Bogor, Jakarta, Bekasi, dan Tangerang. Melayani medical evakuasi, transport pasien, standby event, home care, mobil jenazah, peti jenazah, dan cargo jenazah.",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: SITE_URL },
+      { property: "og:site_name", content: SITE_NAME },
+      { property: "og:image", content: SITE_IMAGE },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: SEO_TITLE },
+      {
+        name: "twitter:description",
+        content:
+          "Sewa ambulance, ambulan, dan ambulans Jabodetabek 24 jam untuk medical evakuasi, transport pasien, standby event, home care, mobil jenazah, peti jenazah, dan cargo jenazah.",
+      },
+      { name: "twitter:image", content: SITE_IMAGE },
+    ],
+    links: [
+      { rel: "canonical", href: SITE_URL },
+      { rel: "icon", href: "/images/LogoBrand.png", type: "image/png" },
+      { rel: "apple-touch-icon", href: "/images/LogoBrand.png" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(structuredData),
       },
     ],
   }),
 });
-
-const WA_NUMBER = "6281234567890";
-const waLink = `https://wa.me/${WA_NUMBER}`;
 
 const navItems = [
   { label: "Beranda", href: "#beranda" },
@@ -64,13 +129,11 @@ const navItems = [
 
 function Logo({ light = false }: { light?: boolean }) {
   return (
-    <a href="#beranda" className="flex items-center gap-2.5">
-      <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-primary-glow shadow-[0_8px_20px_-6px_oklch(0.55_0.18_250/0.5)]">
-        <HeartPulse className="h-5 w-5 text-primary-foreground" strokeWidth={2.5} />
-      </div>
+    <a href="#beranda" className="flex items-center gap-3">
+      <img src="/images/LogoBrand.png" alt="Logo Jabodetabek Care Ambulance" className="h-16 w-16 rounded-xl" />
       <div className="leading-tight">
-        <div className={`text-base font-bold tracking-tight ${light ? "text-white" : "text-foreground"}`}>DepokCare</div>
-        <div className={`text-[10px] font-medium uppercase tracking-[0.15em] ${light ? "text-white/60" : "text-muted-foreground"}`}>
+        <div className={`text-xl font-bold tracking-tight ${light ? "text-white" : "text-foreground"}`}>Jabodetabek Care</div>
+        <div className={`text-xs font-medium uppercase tracking-[0.15em] ${light ? "text-white/60" : "text-muted-foreground"}`}>
           Ambulance
         </div>
       </div>
@@ -86,8 +149,8 @@ function Header() {
       <div className="bg-gradient-to-r from-[#0369A1] to-[#0284C7] text-white text-[11px] font-semibold py-2.5 px-4 lg:px-8 border-b border-[#0284C7]/20 relative z-50">
         <div className="mx-auto max-w-7xl flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="hidden sm:inline">24 Jam Siaga • Homebase Depok • Melayani Jabodetabek</span>
-            <span className="sm:hidden">24 Jam • Depok &amp; Jabodetabek</span>
+            <span className="hidden sm:inline">24 Jam Siaga &bull; Homebase Kab Bogor &bull; Melayani Jabodetabek</span>
+            <span className="sm:hidden">24 Jam &bull; Kab Bogor &amp; Jabodetabek</span>
           </div>
           <div className="hidden sm:flex items-center gap-3.5">
             <span className="text-white/80">Follow Us:</span>
@@ -212,7 +275,7 @@ function Header() {
             Hubungi WhatsApp
           </a>
           <p className="mt-6 text-xs text-muted-foreground">
-            Siaga 24 jam • Depok & Jabodetabek
+            Siaga 24 jam & Jabodetabek
           </p>
         </aside>
       </div>
@@ -224,9 +287,9 @@ function Hero() {
   return (
     <section id="beranda" className="relative overflow-hidden bg-surface">
       <div className="absolute inset-0">
-        <img src={heroImg} alt="Tim ambulance DepokCare" className="h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-white/75 via-white/55 to-white/10 md:from-white/80 md:via-white/60 md:to-white/10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent" />
+        <img src={heroImg} alt="Ambulance VVIP medis Jabodetabek Care" className="h-full w-full object-cover object-right" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/70 via-white/40 to-transparent md:from-white/75 md:via-white/45 md:to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent" />
       </div>
       <div className="relative mx-auto max-w-7xl px-4 py-16 md:py-24 lg:py-32">
         <div className="max-w-2xl">
@@ -246,13 +309,11 @@ function Hero() {
           </div>
           <h1 className="text-4xl font-extrabold leading-[1.05] text-[#0F172A] sm:text-5xl lg:text-6xl">
             Layanan Ambulance{" "}
-            <span className="text-primary">24 Jam</span> untuk{" "}
-            <span className="text-primary">Depok</span> &{" "}
+            <span className="text-primary">24 Jam</span> untuk Area{" "}
             <span className="text-primary">Jabodetabek</span>
           </h1>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-[#475569] sm:text-lg">
-            Transport pasien, rujukan rumah sakit, standby event, dan antar jemput pasien
-            dengan armada lengkap serta tim berpengalaman.
+            Jabodetabek Care Ambulance melayani sewa ambulance, ambulan, dan ambulans 24 jam untuk medical evakuasi, transport pasien, kontrol/check up, standby event, home care, mobil jenazah VVIP, peti jenazah, dan cargo jenazah.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
@@ -272,8 +333,8 @@ function Hero() {
           </div>
           <div className="mt-10 grid max-w-xl grid-cols-3 gap-3">
             {[
-              { i: Clock, t: "Respon ≤ 15 menit" },
-              { i: BadgeCheck, t: "Tim Tersertifikasi" },
+              { i: Clock, t: "Respon <= 10 menit" },
+              { i: BadgeCheck, t: "Tim Berpengalaman" },
               { i: ShieldCheck, t: "24/7 Siaga" },
             ].map(({ i: Icon, t }) => (
               <div
@@ -296,15 +357,15 @@ function QuickContact() {
     {
       icon: Phone,
       title: "Telepon Booking",
-      value: "(021) 8888-1212",
+      value: "0898-7593-648",
       sub: "Hotline Operasional 24 Jam",
-      href: "tel:+62218881212",
+      href: "tel:+628987593648",
       tone: "primary",
     },
     {
       icon: MessageCircle,
       title: "WhatsApp Reservasi",
-      value: "0812-3456-7890",
+      value: "0897-9455-048",
       sub: "Respon Cepat < 5 Menit",
       href: waLink,
       tone: "whatsapp",
@@ -312,9 +373,9 @@ function QuickContact() {
     {
       icon: Info,
       title: "Info Layanan",
-      value: "info@depokcare.id",
+      value: "Konsultasi via WhatsApp",
       sub: "Konsultasi & Estimasi Tarif",
-      href: "mailto:info@depokcare.id",
+      href: waLink,
       tone: "accent",
     },
   ];
@@ -367,7 +428,7 @@ function Benefits() {
   const items = [
     { icon: Wrench, title: "Peralatan Lengkap", desc: "Dilengkapi fasilitas medis modern standar rumah sakit terkini." },
     { icon: Users, title: "Tim Profesional", desc: "Dokter, perawat, dan driver medis berlisensi dan berpengalaman." },
-    { icon: Zap, title: "Respon Cepat", desc: "Dispatser siaga 24 jam dengan unit ambulance terdekat di wilayah Anda." },
+    { icon: Zap, title: "Respon Cepat", desc: "Dispatser/admin siaga 24 jam dengan unit ambulance terdekat di wilayah Anda." },
     { icon: HeartPulse, title: "Kenyamanan Pasien", desc: "Prioritas kenyamanan medis dengan pendampingan ramah keluarga." },
   ];
 
@@ -397,56 +458,114 @@ function Benefits() {
   );
 }
 
+const imageAltBySrc: Record<string, string> = {
+  "/images/transportmedis.jpg": "Ambulance medical evakuasi Jabodetabek",
+  "/images/Interior.jpg": "Interior ambulance VVIP medis",
+  "/images/standbyevent.jpg": "Ambulance standby event Jabodetabek",
+  "/images/unit.jpg": "Ambulance transport pasien Jabodetabek",
+  "/images/petivvip.jpg": "Interior mobil jenazah VVIP",
+  "/images/petijenazah.jpg": "Peti jenazah Jabodetabek Care",
+  "/images/vvipjenazah.jpg": "Mobil jenazah VVIP Jabodetabek",
+  "/images/vvipmedis.jpg": "Ambulance VVIP medis Jabodetabek Care",
+};
+
 function Services() {
   const services = [
     {
-      id: "pasien",
-      title: "Ambulance Pasien",
-      desc: "Antar jemput pasien dengan aman, nyaman, dan didukung tenaga paramedis berpengalaman.",
+      id: "medical-evakuasi",
+      title: "Ambulance Medical Evakuasi",
+      category: "Layanan Medis",
+      desc: "Layanan evakuasi pasien dengan fasilitas medis lengkap, pendampingan tim berpengalaman, dan armada siaga 24 jam.",
+      image: "/images/transportmedis.jpg",
       benefits: [
-        "Stretcher & kursi roda berstandar medis",
-        "Peralatan oksigen & monitoring vital lengkap",
-        "Tarif transparan dan disepakati di awal",
+        "Fasilitas medis lengkap untuk kebutuhan evakuasi",
+        "Didukung driver dan tim berpengalaman",
+        "Cocok untuk kondisi darurat dan rujukan pasien",
       ],
-      waMessage: "Saya ingin pesan layanan Ambulance Pasien untuk transport pasien.",
+      waMessage: "Saya ingin bertanya tentang layanan Ambulance Medical Evakuasi Full Medis.",
     },
     {
-      id: "rujukan",
-      title: "Rujukan RS",
-      desc: "Transfer medis antar rumah sakit dengan koordinasi cepat dan pendampingan khusus agar kondisi pasien stabil.",
+      id: "kontrol-checkup",
+      title: "Pasien Kontrol / Check Up",
+      category: "Layanan Medis",
+      desc: "Antar jemput pasien untuk kontrol rutin, check up, terapi, atau pemeriksaan ke rumah sakit dan klinik.",
+      image: "/images/Interior.jpg",
       benefits: [
-        "Koordinasi dokumen rujukan rumah sakit",
-        "Pendampingan perawat & dokter on-demand",
-        "Monitoring ICU portable siap pakai",
+        "Cocok untuk kontrol rutin dan pemeriksaan pasien",
+        "Perjalanan pasien lebih aman dan nyaman",
+        "Jadwal dapat disesuaikan dengan kebutuhan keluarga",
       ],
-      waMessage: "Saya ingin pesan layanan Rujukan RS untuk transfer pasien.",
+      waMessage: "Saya ingin bertanya tentang layanan Pasien Kontrol / Check Up.",
     },
     {
-      id: "event",
+      id: "standby-event",
       title: "Standby Event",
-      desc: "Siaga medis untuk event olahraga, konser, gathering, dan acara perusahaan dengan perlindungan medis penuh.",
+      category: "Layanan Medis",
+      desc: "Ambulance siaga untuk mendukung kebutuhan medis pada event, kegiatan olahraga, acara perusahaan, komunitas, dan kegiatan publik.",
+      image: "/images/standbyevent.jpg",
       benefits: [
-        "Ambulance standby penuh di lokasi acara",
-        "Tim medis bersertifikat BTCLS / Emergency",
-        "Paket sewa fleksibel per jam atau harian",
+        "Ambulance standby selama acara berlangsung",
+        "Mendukung kebutuhan pertolongan pertama",
+        "Cocok untuk event kecil hingga besar",
       ],
-      waMessage: "Saya ingin pesan layanan Standby Event untuk acara saya.",
+      waMessage: "Saya ingin bertanya tentang layanan Standby Event.",
     },
     {
-      id: "luar",
-      title: "Luar Kota",
-      desc: "Layanan transport pasien jarak jauh dengan armada tangguh, driver berpengalaman, dan pendampingan penuh sepanjang perjalanan.",
+      id: "home-care",
+      title: "Home Care",
+      category: "Layanan Medis",
+      desc: "Layanan perawatan kesehatan di rumah untuk membantu kebutuhan pasien tanpa harus selalu datang ke fasilitas kesehatan.",
+      image: "/images/unit.jpg",
       benefits: [
-        "Armada AC prima khusus perjalanan jauh",
-        "Driver & paramedis bergantian untuk perjalanan panjang",
-        "Optimasi rute tercepat dan aman",
+        "Pelayanan kesehatan langsung di rumah",
+        "Lebih nyaman untuk pasien dan keluarga",
+        "Dapat dikonsultasikan sesuai kebutuhan pasien",
       ],
-      waMessage: "Saya ingin pesan layanan Luar Kota untuk perjalanan pasien.",
+      waMessage: "Saya ingin bertanya tentang layanan Home Care.",
+    },
+    {
+      id: "kedukaan",
+      title: "Kedukaan Muslim / Non-Muslim",
+      category: "Layanan Kedukaan",
+      desc: "Layanan pendampingan kebutuhan kedukaan untuk keluarga muslim maupun non-muslim dengan proses yang tertib dan penuh hormat.",
+      image: "/images/petivvip.jpg",
+      benefits: [
+        "Melayani kebutuhan kedukaan keluarga",
+        "Dukungan untuk muslim dan non-muslim",
+        "Koordinasi layanan lebih mudah dan tertata",
+      ],
+      waMessage: "Saya ingin bertanya tentang layanan Kedukaan Muslim / Non-Muslim.",
+    },
+    {
+      id: "peti-jenazah",
+      title: "Peti Jenazah",
+      category: "Layanan Kedukaan",
+      desc: "Penyediaan peti jenazah sesuai kebutuhan keluarga dengan pilihan yang dapat dikonsultasikan terlebih dahulu.",
+      image: "/images/petijenazah.jpg",
+      benefits: [
+        "Pilihan peti sesuai kebutuhan keluarga",
+        "Dapat dikonsultasikan dengan admin",
+        "Mendukung proses kedukaan dengan lebih tertata",
+      ],
+      waMessage: "Saya ingin bertanya tentang layanan Peti Jenazah.",
+    },
+    {
+      id: "cargo-jenazah",
+      title: "Cargo Jenazah",
+      category: "Layanan Kedukaan",
+      desc: "Layanan pengurusan dan pengantaran jenazah untuk kebutuhan luar kota atau pengiriman tertentu sesuai prosedur.",
+      image: "/images/vvipjenazah.jpg",
+      benefits: [
+        "Mendukung pengiriman jenazah luar kota",
+        "Koordinasi kebutuhan dokumen",
+        "Dibantu oleh tim berpengalaman",
+      ],
+      waMessage: "Saya ingin bertanya tentang layanan Cargo Jenazah.",
     },
   ];
 
-  const [activeTab, setActiveTab] = useState("pasien");
-  const activeService = services.find((service) => service.id === activeTab)!;
+  const [activeTab, setActiveTab] = useState<string>(services[0]?.id ?? "");
+  const activeService = services.find((service) => service.id === activeTab) ?? services[0];
 
   return (
     <section id="layanan" className="mx-auto mt-20 max-w-7xl px-4 lg:mt-32 lg:px-8">
@@ -455,10 +574,10 @@ function Services() {
           Layanan Utama Kami
         </span>
         <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-[#0F172A] sm:text-4xl">
-          Solusi Medis Transport yang Lengkap
+          Layanan Ambulance &amp; Pendukung Kedukaan
         </h2>
         <p className="mt-3 text-[#475569] font-semibold max-w-lg mx-auto">
-          Pilih jenis layanan sesuai kebutuhan spesifik Anda — semua siaga melayani 24 jam penuh.
+          Kami siap melayani kebutuhan medical evakuasi, kontrol pasien, standby event, home care, hingga layanan kedukaan dan pengurusan jenazah.
         </p>
       </div>
 
@@ -476,6 +595,11 @@ function Services() {
                     : "border-sky-100 bg-white text-[#0F172A] hover:border-[#0284C7]/50 hover:bg-[#F8FBFF]"
                 }`}
               >
+                <span className={`mb-3 inline-flex w-fit rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] ${
+                  isSelected ? "bg-white/20 text-white" : "bg-sky-50 text-sky-700"
+                }`}>
+                  {service.category}
+                </span>
                 <span className="mb-1 text-lg font-extrabold">{service.title}</span>
                 <span className={`text-xs leading-relaxed ${isSelected ? "text-sky-100" : "text-slate-500"}`}>
                   {service.desc}
@@ -485,22 +609,26 @@ function Services() {
           })}
         </div>
 
-        <div className="col-span-4 overflow-hidden rounded-3xl border border-sky-100 shadow-md">
-          <div className="relative h-full min-h-[360px]">
-            <img
-              src={interiorImg}
-              alt="Interior cabin DepokCare Ambulance"
-              className="h-full w-full object-cover"
-            />
-            <div className="absolute inset-0 flex items-end bg-gradient-to-t from-[#0F172A]/75 via-transparent to-transparent p-6">
-              <div className="text-left text-white">
-                <span className="mb-2 inline-block rounded-md bg-[#0284C7] px-2 py-1 text-[10px] font-bold uppercase tracking-wider">
-                  Steril & Bersih
-                </span>
-                <p className="text-sm font-semibold">Standardisasi Medis Internasional</p>
+        <div className="col-span-4 overflow-hidden rounded-3xl border border-sky-100 shadow-md bg-slate-100">
+          {activeService.image ? (
+            <div className="relative h-full min-h-[360px]">
+              <img
+                src={activeService.image}
+                alt={imageAltBySrc[activeService.image] ?? activeService.title}
+                className="h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 flex items-end bg-gradient-to-t from-[#0F172A]/75 via-transparent to-transparent p-6">
+                <div className="text-left text-white">
+                  <span className="mb-2 inline-block rounded-md bg-[#0284C7] px-2 py-1 text-[10px] font-bold uppercase tracking-wider">
+                    Steril & Bersih
+                  </span>
+                  <p className="text-sm font-semibold">Standardisasi Medis Internasional</p>
+                </div>
               </div>
             </div>
-          </div>
+          ) : (
+            <div className="relative h-full min-h-[360px]" />
+          )}
         </div>
 
         <div className="col-span-4 flex flex-col justify-between rounded-3xl border border-sky-100 bg-[#F8FBFF] p-8 text-left shadow-sm">
@@ -508,6 +636,9 @@ function Services() {
             <div>
               <span className="mb-2 block text-xs font-bold uppercase tracking-[0.2em] text-[#0284C7]">
                 Detil Layanan Aktif
+              </span>
+              <span className="mb-3 inline-flex rounded-full bg-sky-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-sky-700">
+                {activeService.category}
               </span>
               <h3 className="text-2xl font-extrabold text-[#0F172A]">{activeService.title}</h3>
             </div>
@@ -559,7 +690,14 @@ function Services() {
                   isSelected ? "bg-gradient-to-r from-[#0284C7] to-[#0EA5E9] text-white" : "text-[#0F172A]"
                 }`}
               >
-                <span className="text-base font-extrabold md:text-lg">{service.title}</span>
+                <span className="flex min-w-0 flex-col gap-2">
+                  <span className={`inline-flex w-fit rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] ${
+                    isSelected ? "bg-white/20 text-white" : "bg-sky-50 text-sky-700"
+                  }`}>
+                    {service.category}
+                  </span>
+                  <span className="text-base font-extrabold md:text-lg">{service.title}</span>
+                </span>
                 {isSelected ? (
                   <ChevronUp className="h-5 w-5" />
                 ) : (
@@ -571,14 +709,18 @@ function Services() {
                 <div className="space-y-5 p-5">
                   <p className="text-sm leading-relaxed text-slate-600">{service.desc}</p>
 
-                  <div className="relative h-44 overflow-hidden rounded-xl shadow-inner">
-                    <img
-                      src={interiorImg}
-                      alt="Ambulance interior cabin"
-                      className="h-full w-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-[#0F172A]/10" />
-                  </div>
+                  {service.image ? (
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-xl shadow-inner">
+                      <img
+                        src={service.image}
+                        alt={imageAltBySrc[service.image] ?? service.title}
+                        className="absolute inset-0 h-full w-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-[#0F172A]/10" />
+                    </div>
+                  ) : (
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-slate-100 shadow-inner" />
+                  )}
 
                   <div className="space-y-2">
                     <span className="block text-xs font-bold uppercase tracking-[0.2em] text-[#0F172A]">
@@ -613,97 +755,66 @@ function Services() {
   );
 }
 
-function Partners() {
-  const partners = [
-    { name: "RS Permata Depok" },
-    { name: "RS Citra Medika Depok" },
-    { name: "RS Hermina Depok" },
-    { name: "Klinik Sehat Depok" },
-    { name: "RSUD Kota Depok" },
-    { name: "RS Graha Juanda" },
-  ];
-
-  return (
-    <section className="mx-auto mt-20 max-w-7xl px-4 lg:mt-32 lg:px-8">
-      <div className="relative overflow-hidden rounded-[2rem] border border-[#DCEBFA] bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FBFF_100%)] p-8 shadow-[0_20px_50px_-20px_oklch(0.55_0.18_250/0.28)] lg:p-12">
-        <div className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-[#0284C7]/10 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-sky-200/30 blur-3xl" />
-        <div className="relative z-10 text-center max-w-2xl mx-auto">
-          <span className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-primary">
-            Rumah Sakit &amp; Klinik Rujukan
-          </span>
-          <h2 className="mt-3 text-2xl font-extrabold text-[#0F172A] lg:text-3xl">
-            Fasilitas Kesehatan Rujukan Utama
-          </h2>
-          <p className="mt-2 text-sm font-semibold text-[#475569]">
-            Beberapa fasilitas kesehatan yang sering menjadi tujuan layanan ambulance kami di Depok dan sekitarnya.
-          </p>
-        </div>
-        <div className="relative z-10 mt-10 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
-          {partners.map((p) => (
-            <div
-              key={p.name}
-              className="group flex flex-col justify-center items-center gap-3 rounded-[1.3rem] border border-[#DCEBFA] bg-white p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-[#0284C7]/50 hover:shadow-[0_20px_35px_-16px_oklch(0.55_0.18_250/0.18)] cursor-default"
-            >
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#EAF4FF] text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-white">
-                <Building2 className="h-5.5 w-5.5" />
-              </div>
-              <span className="text-xs font-bold text-[#0F172A] line-clamp-2 mt-1 leading-snug">{p.name}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function Gallery() {
   const categories = ["Semua", "Armada", "Interior", "Dokumentasi", "Event"];
   const [selected, setSelected] = useState("Semua");
 
   const galleryItems = [
-    { 
-      id: 1, 
-      title: "Armada Toyota Hiace Premium", 
-      category: "Armada", 
-      image: "/images/gallery-armada-1.png",
-      spec: "Kapasitas pasien + pendamping, stretcher, oksigen, AC kabin."
+    {
+      id: 1,
+      title: "Mobil Jenazah VVIP",
+      category: "Armada",
+      image: "/images/vvipjenazah.jpg",
+      spec: "Armada jenazah VVIP untuk kebutuhan pengantaran jenazah dengan kabin bersih, nyaman, dan tertata.",
     },
-    { 
-      id: 2, 
-      title: "Armada Suzuki APV Standard", 
-      category: "Armada", 
-      image: "/images/gallery-armada-2.png",
-      spec: "Transport pasien stabil, stretcher, oksigen portable."
+    {
+      id: 2,
+      title: "Interior Mobil Jenazah VVIP",
+      category: "Interior",
+      image: "/images/petivvip.jpg",
+      spec: "Interior kabin mobil jenazah yang bersih, rapi, dan disiapkan untuk perjalanan pengantaran jenazah.",
     },
-    { 
-      id: 3, 
-      title: "Interior Kabin & Stretcher", 
-      category: "Interior", 
-      image: "/images/gallery-interior-1.png",
-      spec: "Kabin bersih, stretcher, kursi pendamping, AC dingin."
+    {
+      id: 3,
+      title: "Ambulance VVIP Medis",
+      category: "Armada",
+      image: "/images/vvipmedis.jpg",
+      spec: "Ambulance VVIP medis dengan fasilitas pendukung untuk evakuasi, rujukan, dan transport pasien.",
     },
-    { 
-      id: 4, 
-      title: "Alat Monitoring Pasien", 
-      category: "Interior", 
-      displayCategory: "Fasilitas", 
-      image: "/images/gallery-interior-2.png",
-      spec: "Monitor vital sign, oksigen, peralatan standar."
+    {
+      id: 4,
+      title: "Interior Ambulance VVIP Medis",
+      category: "Interior",
+      image: "/images/Interior.jpg",
+      spec: "Interior ambulance medis dengan ruang pasien, stretcher, oksigen, dan perlengkapan pendukung perjalanan.",
     },
-    { 
-      id: 5, 
-      title: "Standby Event Medis", 
-      category: "Event", 
-      image: "/images/gallery-standby-1.png",
-      spec: "Siaga acara, tim pendamping, pertolongan pertama."
+    {
+      id: 5,
+      title: "Peti Jenazah",
+      category: "Dokumentasi",
+      image: "/images/petijenazah.jpg",
+      spec: "Penyediaan peti jenazah sesuai kebutuhan keluarga dengan pilihan yang dapat dikonsultasikan terlebih dahulu.",
     },
-    { 
-      id: 6, 
-      title: "Dokumentasi Layanan Medis", 
-      category: "Dokumentasi", 
-      image: "/images/gallery-layanan-1.png",
-      spec: "Rujukan RS, antar jemput pasien, layanan 24 jam."
+    {
+      id: 6,
+      title: "Ambulance Transport",
+      category: "Armada",
+      image: "/images/unit.jpg",
+      spec: "Armada ambulance transport untuk antar jemput pasien, kontrol rutin, dan perjalanan menuju fasilitas kesehatan.",
+    },
+    {
+      id: 7,
+      title: "Transport Medis",
+      category: "Dokumentasi",
+      image: "/images/transportmedis.jpg",
+      spec: "Dokumentasi layanan transport medis untuk pasien dengan pendampingan dan armada yang sesuai kebutuhan.",
+    },
+    {
+      id: 8,
+      title: "Standby Event",
+      category: "Event",
+      image: "/images/standbyevent.jpg",
+      spec: "Ambulance standby untuk mendukung kebutuhan medis pada event, acara perusahaan, komunitas, dan kegiatan publik.",
     },
   ];
 
@@ -724,7 +835,7 @@ function Gallery() {
             Galeri Kegiatan &amp; Fasilitas
           </h2>
           <p className="mt-3 text-[#475569] font-semibold max-w-lg mx-auto">
-            Beberapa dokumentasi armada dan layanan ambulance kami secara visual di lapangan.
+            Beberapa dokumentasi armada dan layanan ambulance kami di lapangan.
           </p>
         </div>
 
@@ -756,7 +867,7 @@ function Gallery() {
               <div className="relative aspect-4/3 overflow-hidden bg-slate-100">
                 <img
                   src={item.image}
-                  alt={item.title}
+                  alt={imageAltBySrc[item.image] ?? item.title}
                   loading="lazy"
                   className="h-full w-full object-cover transition-all duration-500 hover:scale-105"
                 />
@@ -765,7 +876,7 @@ function Gallery() {
 
               <div className="p-4 sm:p-4">
                 <span className="inline-flex rounded-full bg-sky-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-sky-700">
-                  {item.displayCategory || item.category}
+                  {item.category}
                 </span>
                 <h4 className="mt-3 text-sm font-extrabold text-slate-900 leading-snug">{item.title}</h4>
                 <p className="mt-2 text-[12px] font-medium leading-relaxed text-slate-600">{item.spec}</p>
@@ -780,16 +891,13 @@ function Gallery() {
 
 function AreaService() {
   const areas = [
-    { name: "Depok", isHomebase: true },
-    { name: "Jakarta Selatan" },
-    { name: "Jakarta Timur" },
-    { name: "Jakarta Barat" },
-    { name: "Jakarta Pusat" },
-    { name: "Jakarta Utara" },
-    { name: "Bogor" },
+    { name: "Kab Bogor / Kabupaten Bogor", isHomebase: true },
+    { name: "Depok" },
+    { name: "Jakarta" },
+    { name: "Bogor / Kota Bogor" },
     { name: "Tangerang" },
-    { name: "Tangerang Selatan" },
     { name: "Bekasi" },
+    { name: "Nasional via Cargo" },
   ];
 
   return (
@@ -803,10 +911,10 @@ function AreaService() {
               Area Layanan Kami
             </span>
             <h2 className="mt-4 text-2xl font-extrabold tracking-tight text-[#0F172A] sm:text-3xl">
-              Homebase Depok, Siaga untuk Jabodetabek
+              Homebase Kab Bogor, Siaga untuk Jabodetabek
             </h2>
-            <p className="mt-3 text-sm font-semibold text-[#475569] max-w-xl mx-auto">
-              Berangkat dari Depok, layanan kami menjangkau Jakarta, Bogor, Tangerang, Bekasi, dan sekitarnya.
+            <p className="mt-3 text-sm font-semibold text-[#475569] max-w-3xl mx-auto">
+              Jabodetabek Care Ambulance melayani kebutuhan ambulance, ambulan, dan ambulans 24 jam untuk wilayah Depok, Kota Bogor, Kabupaten Bogor, Jakarta, Bekasi, Tangerang, dan seluruh area Jabodetabek. Layanan tersedia untuk medical evakuasi, transport pasien, kontrol rumah sakit, check up, standby event, home care, layanan kedukaan, mobil jenazah VVIP, peti jenazah, dan cargo jenazah.
             </p>
 
             <div className="mt-10 flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
@@ -845,7 +953,7 @@ function AreaService() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75"></span>
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-white"></span>
               </span>
-              Homebase Depok — Melayani seluruh Jabodetabek &amp; sekitarnya
+              Homebase Kab Bogor - Melayani seluruh Jabodetabek &amp; sekitarnya
             </span>
           </div>
         </div>
@@ -884,7 +992,7 @@ function BookingProcess() {
           Alur Pemesanan Ambulance
         </h2>
         <p className="mt-3 text-[#475569] font-semibold max-w-lg mx-auto">
-          Ikuti 4 langkah sederhana berikut untuk mendapatkan penanganan cepat dari tim dispatser kami.
+          Ikuti 4 langkah sederhana berikut untuk mendapatkan penanganan cepat dari tim dispatser/admin kami.
         </p>
       </div>
 
@@ -924,20 +1032,20 @@ function BookingProcess() {
 function Testimonials() {
   const items = [
     {
-      name: "Ibu Rina",
+      name: "Fauzi Ikhsan",
       city: "Depok",
       rating: 5,
       text: "Pelayanannya cepat dan sangat membantu saat kondisi darurat di tengah malam.",
     },
     {
-      name: "Bapak Andi",
-      city: "Bekasi",
+      name: "Muhammad Dhafa",
+      city: "Ciomas",
       rating: 5,
       text: "Armada bersih, driver ramah, dan proses rujukan berjalan lancar.",
     },
     {
-      name: "Bapak Dedi",
-      city: "Tangerang",
+      name: "Reksa Prayoga",
+      city: "Kota Bogor",
       rating: 5,
       text: "Driver profesional dan perjalanan nyaman. Pasien sampai dengan aman.",
     },
@@ -1047,8 +1155,8 @@ function Drivers() {
 
 function WhyChoose() {
   const items = [
-    { icon: Clock, label: "24/7 Siaga Darurat", desc: "Tim dispatser & paramedis siap melayani kapan saja dibutuhkan." },
-    { icon: Users, label: "Tim Medis Berlisensi", desc: "Paramedis berpengalaman dengan sertifikasi kegawatdaruratan resmi." },
+    { icon: Clock, label: "24/7 Siaga Darurat", desc: "Tim dispatser/admin & paramedis siap melayani kapan saja dibutuhkan." },
+    { icon: Users, label: "Tim Berpengalaman", desc: "Didukung driver dan tim lapangan berpengalaman untuk memastikan layanan cepat, aman, dan nyaman." },
     { icon: Wrench, label: "Armada Medis Lengkap", desc: "Unit ambulance bersih, steril, dan dilengkapi peralatan penunjang hidup." },
     { icon: DollarSign, label: "Harga Transparan", desc: "Estimasi biaya jelas di awal pemesanan tanpa biaya tersembunyi." },
     { icon: ShieldCheck, label: "Keselamatan Utama", desc: "Fokus keselamatan pasien dengan SOP medis ketat sepanjang jalan." },
@@ -1067,10 +1175,10 @@ function WhyChoose() {
               Keunggulan Utama
             </span>
             <h2 className="text-3xl font-extrabold lg:text-4xl text-white tracking-tight leading-tight">
-              Kenapa Memilih DepokCare Ambulance?
+              Kenapa Memilih Jabodetabek Care Ambulance?
             </h2>
             <p className="text-white/80 font-semibold mt-3 text-sm lg:text-base leading-relaxed">
-              Kami berkomitmen memberikan layanan transportasi medis yang cepat, aman, dan profesional untuk wilayah Depok &amp; seluruh Jabodetabek.
+              Kami berkomitmen memberikan layanan transportasi medis yang cepat, aman, dan profesional untuk Kab Bogor &amp; seluruh Jabodetabek.
             </p>
           </div>
 
@@ -1100,11 +1208,11 @@ function FAQ() {
   const faqs = [
     {
       q: "Apakah layanan tersedia 24 jam?",
-      a: "Ya, DepokCare Ambulance siaga 24/7 termasuk hari libur nasional. Hubungi WhatsApp atau telepon kami kapan saja.",
+      a: "Ya, Jabodetabek Care Ambulance siaga 24/7 termasuk hari libur nasional. Hubungi WhatsApp atau telepon kami kapan saja.",
     },
     {
       q: "Apakah melayani seluruh Jabodetabek?",
-      a: "Ya, kami melayani Depok, Jakarta, Bogor, Tangerang, Tangsel, dan Bekasi dengan unit siaga di beberapa titik.",
+      a: "Ya, kami melayani Depok, Kota Bogor, Kabupaten Bogor, Jakarta, Bekasi, Tangerang, dan seluruh Jabodetabek.",
     },
     {
       q: "Apakah bisa untuk rujukan rumah sakit?",
@@ -1117,6 +1225,18 @@ function FAQ() {
     {
       q: "Bagaimana cara mendapatkan estimasi biaya?",
       a: "Anda dapat menghubungi tim admin kami melalui WhatsApp dengan menyertakan lokasi penjemputan, tujuan, dan jenis armada yang dibutuhkan untuk mendapatkan estimasi tarif transparan di awal.",
+    },
+    {
+      q: "Apakah tersedia layanan mobil jenazah dan peti jenazah?",
+      a: "Ya, kami melayani kebutuhan kedukaan, mobil jenazah VVIP, peti jenazah, dan cargo jenazah dengan koordinasi yang dapat dikonsultasikan melalui WhatsApp.",
+    },
+    {
+      q: "Apakah melayani ambulan atau ambulans selain ambulance?",
+      a: "Ya, layanan kami juga dikenal sebagai ambulance, ambulan, atau ambulans 24 jam untuk transport pasien, evakuasi medis, standby event, dan layanan kedukaan di area Jabodetabek.",
+    },
+    {
+      q: "Apakah melayani Kabupaten Bogor?",
+      a: "Ya, homebase kami berada di Kab Bogor dan melayani Kabupaten Bogor, Kota Bogor, Depok, Jakarta, Bekasi, Tangerang, dan seluruh Jabodetabek.",
     },
   ];
 
@@ -1192,12 +1312,12 @@ function Footer() {
                 <Ambulance className="h-5 w-5 text-white" />
               </span>
               <span className="leading-tight">
-                <span className="block text-base font-extrabold">DepokCare</span>
+                <span className="block text-base font-extrabold">Jabodetabek Care Ambulance</span>
                 <span className="block text-[11px] font-semibold uppercase tracking-[0.2em] text-white/70">AMBULANCE</span>
               </span>
             </div>
             <p className="mt-4 text-sm leading-relaxed text-white/70">
-              Layanan ambulance 24 jam siaga di Depok untuk seluruh Jabodetabek. Transport pasien, rujukan rumah sakit, standby event, dan luar kota.
+              Kami menyediakan layanan sewa Ambulance VIP 24 jam dengan fasilitas medis lengkap, didukung driver berpengalaman dan profesional untuk memastikan perjalanan pasien tetap aman, nyaman, dan responsif dalam kondisi mendesak.
             </p>
             <a
               href={waLink}
@@ -1214,7 +1334,7 @@ function Footer() {
             <h4 className="text-sm font-bold uppercase tracking-[0.2em] text-white/90">Area Layanan</h4>
             <ul className="mt-4 space-y-2 text-sm text-white/70">
               <li className="flex items-center gap-2">
-                <MapPin className="h-3.5 w-3.5 text-[#0284C7]" /> Depok (HQ)
+                <MapPin className="h-3.5 w-3.5 text-[#0284C7]" /> Kab Bogor (HQ)
               </li>
               <li className="flex items-center gap-2">
                 <MapPin className="h-3.5 w-3.5 text-[#0284C7]" /> Jakarta
@@ -1223,7 +1343,10 @@ function Footer() {
                 <MapPin className="h-3.5 w-3.5 text-[#0284C7]" /> Bogor
               </li>
               <li className="flex items-center gap-2">
-                <MapPin className="h-3.5 w-3.5 text-[#0284C7]" /> Tangerang &amp; Tangsel
+                <MapPin className="h-3.5 w-3.5 text-[#0284C7]" /> Depok
+              </li>
+              <li className="flex items-center gap-2">
+                <MapPin className="h-3.5 w-3.5 text-[#0284C7]" /> Tangerang
               </li>
               <li className="flex items-center gap-2">
                 <MapPin className="h-3.5 w-3.5 text-[#0284C7]" /> Bekasi
@@ -1249,15 +1372,15 @@ function Footer() {
             <ul className="mt-4 space-y-3 text-sm text-white/80">
               <li className="flex items-start gap-2">
                 <Phone className="mt-0.5 h-4 w-4 text-[#0284C7]" />
-                (021) 8888-1212
+                +628987593648
               </li>
               <li className="flex items-start gap-2">
                 <MessageCircle className="mt-0.5 h-4 w-4 text-[#0284C7]" />
-                0812-3456-7890
+                0897-9455-048
               </li>
               <li className="flex items-start gap-2">
                 <Info className="mt-0.5 h-4 w-4 text-[#0284C7]" />
-                info@depokcare.id
+                Konsultasi via WhatsApp
               </li>
               <li className="flex items-start gap-2">
                 <Clock className="mt-0.5 h-4 w-4 text-[#0284C7]" />
@@ -1283,8 +1406,8 @@ function Footer() {
 
       <div className="border-t border-white/10 bg-[oklch(0.15_0.04_260)]">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-5 text-xs text-white/60 sm:flex-row">
-          <p>© {new Date().getFullYear()} DepokCare Ambulance. Semua hak dilindungi.</p>
-          <p>Homebase Depok • Melayani Jabodetabek 24 Jam</p>
+          <p>&copy; {new Date().getFullYear()} Jabodetabek Care Ambulance. Semua hak dilindungi.</p>
+          <p>Homebase Kab Bogor &bull; Melayani Jabodetabek 24 Jam</p>
         </div>
       </div>
     </footer>
@@ -1315,7 +1438,6 @@ function Index() {
         <QuickContact />
         <Benefits />
         <Services />
-        <Partners />
         <Gallery />
         <AreaService />
         <BookingProcess />

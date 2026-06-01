@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jabodetabekcare.netlify.app/sitemap.xml
