@@ -31,7 +31,7 @@ import heroImg from "@/assets/vvipmedis.jpeg";
 
 const SITE_URL = "https://jabodetabekcare.netlify.app/";
 const SITE_NAME = "Jabodetabek Care Ambulance";
-const SITE_IMAGE = `${SITE_URL}images/LogoBrand.png`;
+const SITE_IMAGE = "https://jabodetabekcare.netlify.app/images/LogoBrand.png?v=2";
 const SEO_TITLE =
   "Jabodetabek Care Ambulance | Sewa Ambulance & Ambulan Jabodetabek 24 Jam";
 const SEO_DESCRIPTION =
@@ -93,6 +93,9 @@ export const Route = createFileRoute("/")({
       { property: "og:url", content: SITE_URL },
       { property: "og:site_name", content: SITE_NAME },
       { property: "og:image", content: SITE_IMAGE },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:type", content: "image/png" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: SEO_TITLE },
       {
