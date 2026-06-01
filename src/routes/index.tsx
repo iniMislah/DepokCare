@@ -132,8 +132,12 @@ const navItems = [
 
 function Logo({ light = false }: { light?: boolean }) {
   return (
-    <a href="#beranda" className="flex items-center gap-3">
-      <img src="/images/LogoBrand.png" alt="Logo Jabodetabek Care Ambulance" className="h-16 w-16 rounded-xl" />
+    <a href="#beranda" className="flex items-center gap-2">
+      <img
+        src="/images/LogoBrand.png"
+        alt="Logo Jabodetabek Care Ambulance"
+        className="h-16 w-16 sm:h-18 sm:w-18 object-contain"
+      />
       <div className="leading-tight">
         <div className={`text-xl font-bold tracking-tight ${light ? "text-white" : "text-foreground"}`}>Jabodetabek Care</div>
         <div className={`text-xs font-medium uppercase tracking-[0.15em] ${light ? "text-white/60" : "text-muted-foreground"}`}>
@@ -315,7 +319,7 @@ function Hero() {
             <span className="text-primary">24 Jam</span> untuk Area{" "}
             <span className="text-primary">Jabodetabek</span>
           </h1>
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-[#475569] sm:text-lg">
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-900 sm:text-lg">
             Jabodetabek Care Ambulance melayani sewa ambulance, ambulan, dan ambulans 24 jam untuk medical evakuasi, transport pasien, kontrol/check up, standby event, home care, mobil jenazah VVIP, peti jenazah, dan cargo jenazah.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
@@ -336,7 +340,7 @@ function Hero() {
           </div>
           <div className="mt-10 grid max-w-xl grid-cols-3 gap-3">
             {[
-              { i: Clock, t: "Respon <= 10 menit" },
+              { i: Clock, t: "Respon <= 5 menit" },
               { i: BadgeCheck, t: "Tim Berpengalaman" },
               { i: ShieldCheck, t: "24/7 Siaga" },
             ].map(({ i: Icon, t }) => (
@@ -917,9 +921,8 @@ function AreaService() {
               Homebase Kab Bogor, Siaga untuk Jabodetabek
             </h2>
             <p className="mt-3 text-sm font-semibold text-[#475569] max-w-3xl mx-auto">
-              Jabodetabek Care Ambulance melayani kebutuhan ambulance, ambulan, dan ambulans 24 jam untuk wilayah Depok, Kota Bogor, Kabupaten Bogor, Jakarta, Bekasi, Tangerang, dan seluruh area Jabodetabek. Layanan tersedia untuk medical evakuasi, transport pasien, kontrol rumah sakit, check up, standby event, home care, layanan kedukaan, mobil jenazah VVIP, peti jenazah, dan cargo jenazah.
+               Melayani kebutuhan ambulance 24 jam untuk Bogor, Depok, Jakarta, Bekasi, Tangerang, dan sekitarnya, mulai dari transport pasien, evakuasi medis, standby event, hingga layanan kedukaan.
             </p>
-
             <div className="mt-10 flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
               {areas.map((a) => {
                 if (a.isHomebase) {
