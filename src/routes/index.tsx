@@ -33,11 +33,11 @@ const SITE_URL = "https://jabodetabekcare.netlify.app/";
 const SITE_NAME = "Jabodetabek Care Ambulance";
 const SITE_IMAGE = "https://jabodetabekcare.netlify.app/images/LogoBrand.png?v=2";
 const SEO_TITLE =
-  "Jabodetabek Care Ambulance | Sewa Ambulance & Ambulan Jabodetabek 24 Jam";
+  "Sewa Ambulance Jabodetabek 24 Jam | Jabodetabek Care Ambulance";
 const SEO_DESCRIPTION =
-  "Jabodetabek Care Ambulance melayani sewa ambulance, ambulan, dan ambulans 24 jam untuk Jabodetabek, Depok, Bogor, Kabupaten Bogor, Jakarta, Bekasi, dan Tangerang. Tersedia medical evakuasi, transport pasien, kontrol/check up, standby event, home care, mobil jenazah VVIP, peti jenazah, dan cargo jenazah.";
+  "Jabodetabek Care Ambulance melayani sewa ambulance, ambulan, dan ambulans 24 jam untuk Jabodetabek, Bogor, Depok, Jakarta, Bekasi, dan Tangerang. Layanan transport pasien, evakuasi medis, standby event, home care, mobil jenazah, peti jenazah, dan cargo jenazah.";
 const SEO_KEYWORDS =
-  "sewa ambulance jabodetabek, ambulance jabodetabek, ambulan jabodetabek, ambulans jabodetabek, mobil ambulance jabodetabek, ambulance depok, sewa ambulance depok, ambulan depok, ambulans depok, ambulance bogor, sewa ambulance bogor, ambulance kabupaten bogor, sewa ambulance kabupaten bogor, ambulance jakarta, ambulance bekasi, ambulance tangerang, ambulance 24 jam, ambulance medical evakuasi, ambulance evakuasi medis, ambulance vvip medis, ambulance transport pasien, transport pasien, pasien kontrol, check up pasien, standby event ambulance, ambulance standby event, home care, ambulance jenazah, mobil jenazah vvip, sewa mobil jenazah, peti jenazah, cargo jenazah, pengiriman jenazah";
+  "sewa ambulance Jabodetabek 24 jam, ambulance Jabodetabek, ambulance terdekat, ambulan Jabodetabek, ambulans Jabodetabek, ambulance Bogor, ambulance Depok, ambulance Jakarta, ambulance Bekasi, ambulance Tangerang, transport pasien Jabodetabek, evakuasi medis Jabodetabek, mobil jenazah Jabodetabek, standby ambulance event, home care Jabodetabek, peti jenazah, cargo jenazah";
 const WA_PHONE_INTL = "628979455048";
 const waLink = `https://wa.me/${WA_PHONE_INTL}`;
 const structuredData = {
@@ -51,26 +51,25 @@ const structuredData = {
   priceRange: "$$",
   areaServed: [
     "Jabodetabek",
-    "Depok",
-    "Kota Bogor",
     "Kabupaten Bogor",
+    "Kota Bogor",
+    "Depok",
     "Jakarta",
     "Bekasi",
     "Tangerang",
   ],
   serviceType: [
-    "Ambulance medical evakuasi",
-    "Ambulan transport pasien",
-    "Ambulans 24 jam",
-    "Pasien kontrol check up",
+    "Transport pasien",
+    "Evakuasi medis",
+    "Ambulance 24 jam",
     "Standby event ambulance",
     "Home care",
-    "Mobil jenazah VVIP",
+    "Mobil jenazah",
     "Peti jenazah",
     "Cargo jenazah",
   ],
   description:
-    "Layanan sewa ambulance, ambulan, dan ambulans 24 jam untuk wilayah Jabodetabek, Depok, Bogor, Kabupaten Bogor, Jakarta, Bekasi, dan Tangerang. Melayani medical evakuasi, transport pasien, kontrol/check up, standby event, home care, layanan kedukaan, mobil jenazah VVIP, peti jenazah, dan cargo jenazah.",
+    "Layanan ambulance 24 jam untuk Jabodetabek, Bogor, Depok, Jakarta, Bekasi, dan Tangerang, meliputi transport pasien, evakuasi medis, standby event, home care, mobil jenazah, peti jenazah, dan cargo jenazah.",
 };
 
 export const Route = createFileRoute("/")({
@@ -86,8 +85,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: SEO_TITLE },
       {
         property: "og:description",
-        content:
-          "Layanan ambulance, ambulan, dan ambulans 24 jam untuk Jabodetabek, Depok, Bogor, Kabupaten Bogor, Jakarta, Bekasi, dan Tangerang. Melayani medical evakuasi, transport pasien, standby event, home care, mobil jenazah, peti jenazah, dan cargo jenazah.",
+        content: SEO_DESCRIPTION,
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: SITE_URL },
@@ -100,8 +98,7 @@ export const Route = createFileRoute("/")({
       { name: "twitter:title", content: SEO_TITLE },
       {
         name: "twitter:description",
-        content:
-          "Sewa ambulance, ambulan, dan ambulans Jabodetabek 24 jam untuk medical evakuasi, transport pasien, standby event, home care, mobil jenazah, peti jenazah, dan cargo jenazah.",
+        content: SEO_DESCRIPTION,
       },
       { name: "twitter:image", content: SITE_IMAGE },
     ],
@@ -294,7 +291,7 @@ function Hero() {
   return (
     <section id="beranda" className="relative overflow-hidden bg-surface">
       <div className="absolute inset-0">
-        <img src={heroImg} alt="Ambulance VVIP medis Jabodetabek Care" className="h-full w-full object-cover object-right" />
+        <img src={heroImg} alt="Ambulance Jabodetabek Care untuk transport pasien 24 jam" className="h-full w-full object-cover object-right" />
         <div className="absolute inset-0 bg-gradient-to-r from-white/70 via-white/40 to-transparent md:from-white/75 md:via-white/45 md:to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent" />
       </div>
@@ -315,12 +312,11 @@ function Hero() {
             ))}
           </div>
           <h1 className="text-4xl font-extrabold leading-[1.05] text-[#0F172A] sm:text-5xl lg:text-6xl">
-            Layanan Ambulance{" "}
-            <span className="text-primary">24 Jam</span> untuk Area{" "}
-            <span className="text-primary">Jabodetabek</span>
+            Sewa <span className="text-primary">Ambulance Jabodetabek</span>{" "}
+            24 Jam
           </h1>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-900 sm:text-lg">
-            Jabodetabek Care Ambulance melayani sewa ambulance, ambulan, dan ambulans 24 jam untuk medical evakuasi, transport pasien, kontrol/check up, standby event, home care, mobil jenazah VVIP, peti jenazah, dan cargo jenazah.
+            Jabodetabek Care Ambulance melayani sewa ambulance, ambulan, dan ambulans 24 jam untuk wilayah Jabodetabek, Bogor, Depok, Jakarta, Bekasi, Tangerang, dan sekitarnya. Kami siap membantu kebutuhan transport pasien, evakuasi medis, pasien kontrol, standby event, home care, mobil jenazah, peti jenazah, dan cargo jenazah.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
@@ -435,7 +431,7 @@ function Benefits() {
   const items = [
     { icon: Wrench, title: "Peralatan Lengkap", desc: "Dilengkapi fasilitas medis modern standar rumah sakit terkini." },
     { icon: Users, title: "Tim Profesional", desc: "Dokter, perawat, dan driver medis berlisensi dan berpengalaman." },
-    { icon: Zap, title: "Respon Cepat", desc: "Dispatser/admin siaga 24 jam dengan unit ambulance terdekat di wilayah Anda." },
+    { icon: Zap, title: "Respon Cepat", desc: "Dispatser/admin siaga 24 jam dengan koordinasi armada sesuai lokasi Anda." },
     { icon: HeartPulse, title: "Kenyamanan Pasien", desc: "Prioritas kenyamanan medis dengan pendampingan ramah keluarga." },
   ];
 
@@ -466,14 +462,14 @@ function Benefits() {
 }
 
 const imageAltBySrc: Record<string, string> = {
-  "/images/transportmedis.jpg": "Ambulance medical evakuasi Jabodetabek",
-  "/images/Interior.jpg": "Interior ambulance VVIP medis",
-  "/images/standbyevent.jpg": "Ambulance standby event Jabodetabek",
-  "/images/unit.jpg": "Ambulance transport pasien Jabodetabek",
-  "/images/petivvip.jpg": "Interior mobil jenazah VVIP",
-  "/images/petijenazah.jpg": "Peti jenazah Jabodetabek Care",
+  "/images/transportmedis.jpg": "Ambulance Jabodetabek Care untuk evakuasi medis",
+  "/images/Interior.jpg": "Interior ambulance VVIP Jabodetabek Care",
+  "/images/standbyevent.jpg": "Standby event ambulance Jabodetabek",
+  "/images/unit.jpg": "Armada ambulance untuk layanan medis Jabodetabek",
+  "/images/petivvip.jpg": "Interior mobil jenazah VVIP Jabodetabek",
+  "/images/petijenazah.jpg": "Peti jenazah untuk layanan kedukaan",
   "/images/vvipjenazah.jpg": "Mobil jenazah VVIP Jabodetabek",
-  "/images/vvipmedis.jpg": "Ambulance VVIP medis Jabodetabek Care",
+  "/images/vvipmedis.jpg": "Ambulance Jabodetabek Care untuk transport pasien 24 jam",
 };
 
 function Services() {
@@ -898,13 +894,13 @@ function Gallery() {
 
 function AreaService() {
   const areas = [
-    { name: "Kab Bogor / Kabupaten Bogor", isHomebase: true },
-    { name: "Depok" },
-    { name: "Jakarta" },
-    { name: "Bogor / Kota Bogor" },
-    { name: "Tangerang" },
-    { name: "Bekasi" },
-    { name: "Nasional via Cargo" },
+    { name: "Ambulance Kabupaten Bogor", isHomebase: true },
+    { name: "Ambulance Kota Bogor" },
+    { name: "Ambulance Depok" },
+    { name: "Ambulance Jakarta" },
+    { name: "Ambulance Bekasi" },
+    { name: "Ambulance Tangerang" },
+    { name: "Ambulance Jabodetabek" },
   ];
 
   return (
@@ -918,10 +914,10 @@ function AreaService() {
               Area Layanan Kami
             </span>
             <h2 className="mt-4 text-2xl font-extrabold tracking-tight text-[#0F172A] sm:text-3xl">
-              Homebase Kab Bogor, Siaga untuk Jabodetabek
+              Area Layanan Ambulance Jabodetabek
             </h2>
             <p className="mt-3 text-sm font-semibold text-[#475569] max-w-3xl mx-auto">
-               Melayani kebutuhan ambulance 24 jam untuk Bogor, Depok, Jakarta, Bekasi, Tangerang, dan sekitarnya, mulai dari transport pasien, evakuasi medis, standby event, hingga layanan kedukaan.
+              Jabodetabek Care Ambulance melayani ambulance 24 jam untuk Kabupaten Bogor, Kota Bogor, Depok, Jakarta, Bekasi, Tangerang, dan area Jabodetabek lainnya. Layanan tersedia untuk kebutuhan transport pasien, evakuasi medis, standby event, hingga layanan kedukaan.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
               {areas.map((a) => {
@@ -1214,19 +1210,19 @@ function FAQ() {
   const faqs = [
     {
       q: "Apakah layanan tersedia 24 jam?",
-      a: "Ya, Jabodetabek Care Ambulance siaga 24/7 termasuk hari libur nasional. Hubungi WhatsApp atau telepon kami kapan saja.",
+      a: "Ya, Jabodetabek Care Ambulance menyediakan ambulance 24 jam termasuk hari libur nasional. Hubungi WhatsApp atau telepon kami kapan saja.",
     },
     {
       q: "Apakah melayani seluruh Jabodetabek?",
-      a: "Ya, kami melayani Depok, Kota Bogor, Kabupaten Bogor, Jakarta, Bekasi, Tangerang, dan seluruh Jabodetabek.",
+      a: "Ya, layanan sewa ambulance Jabodetabek kami mencakup Kabupaten Bogor, Kota Bogor, Depok, Jakarta, Bekasi, Tangerang, dan area sekitarnya.",
     },
     {
       q: "Apakah bisa untuk rujukan rumah sakit?",
-      a: "Tentu. Kami mendukung rujukan antar rumah sakit dengan koordinasi dokumen medis lengkap dan pendampingan paramedis.",
+      a: "Tentu. Kami mendukung transport pasien dan evakuasi medis untuk rujukan antar rumah sakit dengan koordinasi dokumen medis dan pendampingan sesuai kebutuhan.",
     },
     {
       q: "Apakah bisa booking untuk event?",
-      a: "Bisa. Tersedia paket standby per jam atau harian untuk event olahraga, konser, gathering, dan acara perusahaan.",
+      a: "Bisa. Tersedia layanan standby ambulance event per jam atau harian untuk event olahraga, konser, gathering, dan acara perusahaan.",
     },
     {
       q: "Bagaimana cara mendapatkan estimasi biaya?",
@@ -1234,15 +1230,15 @@ function FAQ() {
     },
     {
       q: "Apakah tersedia layanan mobil jenazah dan peti jenazah?",
-      a: "Ya, kami melayani kebutuhan kedukaan, mobil jenazah VVIP, peti jenazah, dan cargo jenazah dengan koordinasi yang dapat dikonsultasikan melalui WhatsApp.",
-    },
-    {
-      q: "Apakah melayani ambulan atau ambulans selain ambulance?",
-      a: "Ya, layanan kami juga dikenal sebagai ambulance, ambulan, atau ambulans 24 jam untuk transport pasien, evakuasi medis, standby event, dan layanan kedukaan di area Jabodetabek.",
+      a: "Ya, kami melayani kebutuhan kedukaan, mobil jenazah Jabodetabek, peti jenazah, dan cargo jenazah dengan koordinasi yang dapat dikonsultasikan melalui WhatsApp.",
     },
     {
       q: "Apakah melayani Kabupaten Bogor?",
-      a: "Ya, homebase kami berada di Kab Bogor dan melayani Kabupaten Bogor, Kota Bogor, Depok, Jakarta, Bekasi, Tangerang, dan seluruh Jabodetabek.",
+      a: "Ya, kami melayani ambulance Bogor untuk Kabupaten Bogor dan Kota Bogor, serta ambulance Depok, Jakarta, Bekasi, Tangerang, dan seluruh Jabodetabek.",
+    },
+    {
+      q: "Apakah tersedia ambulance terdekat di area Jabodetabek?",
+      a: "Jabodetabek Care Ambulance siap membantu kebutuhan ambulance terdekat di area Jabodetabek, Bogor, Depok, Jakarta, Bekasi, Tangerang, dan sekitarnya. Silakan hubungi admin untuk konfirmasi lokasi dan ketersediaan armada.",
     },
   ];
 
@@ -1323,7 +1319,7 @@ function Footer() {
               </span>
             </div>
             <p className="mt-4 text-sm leading-relaxed text-white/70">
-              Kami menyediakan layanan sewa Ambulance VIP 24 jam dengan fasilitas medis lengkap, didukung driver berpengalaman dan profesional untuk memastikan perjalanan pasien tetap aman, nyaman, dan responsif dalam kondisi mendesak.
+            Butuh ambulance terdekat di area Jabodetabek? Tim kami siap membantu layanan ambulance 24 jam untuk Bogor, Depok, Jakarta, Bekasi, Tangerang, dan sekitarnya.
             </p>
             <a
               href={waLink}
