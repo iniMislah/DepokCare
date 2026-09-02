@@ -154,7 +154,7 @@ function Header() {
       <div className="bg-gradient-to-r from-[#0369A1] to-[#0284C7] text-white text-[11px] font-semibold py-2.5 px-4 lg:px-8 border-b border-[#0284C7]/20 relative z-50">
         <div className="mx-auto max-w-7xl flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="hidden sm:inline">24 Jam Siaga &bull; Homebase Kab Bogor &bull; Melayani Jabodetabek</span>
+            <span className="hidden sm:inline">24 Jam Siaga &bull; Homebase Kota Depok &bull; Melayani Jabodetabek</span>
             <span className="sm:hidden">24 Jam &bull; Kab Bogor &amp; Jabodetabek</span>
           </div>
           <div className="hidden sm:flex items-center gap-3.5">
@@ -1000,9 +1000,9 @@ function Gallery() {
 
 function AreaService() {
   const areas = [
-    { name: "Ambulance Kabupaten Bogor", isHomebase: true },
+    { name: "Ambulance Depok", isHomebase: true },
     { name: "Ambulance Kota Bogor" },
-    { name: "Ambulance Depok" },
+    { name: "Ambulance Kabupaten Bogor" },
     { name: "Ambulance Jakarta" },
     { name: "Ambulance Bekasi" },
     { name: "Ambulance Tangerang" },
@@ -1385,7 +1385,7 @@ function Footer() {
             <h4 className="text-sm font-bold uppercase tracking-[0.2em] text-white/90">Area Layanan</h4>
             <ul className="mt-4 space-y-2 text-sm text-white/70">
               <li className="flex items-center gap-2">
-                <MapPin className="h-3.5 w-3.5 text-[#0284C7]" /> Kab Bogor (HQ)
+                <MapPin className="h-3.5 w-3.5 text-[#0284C7]" /> Kota Depok (HQ)
               </li>
               <li className="flex items-center gap-2">
                 <MapPin className="h-3.5 w-3.5 text-[#0284C7]" /> Jakarta
@@ -1394,7 +1394,7 @@ function Footer() {
                 <MapPin className="h-3.5 w-3.5 text-[#0284C7]" /> Bogor
               </li>
               <li className="flex items-center gap-2">
-                <MapPin className="h-3.5 w-3.5 text-[#0284C7]" /> Depok
+                <MapPin className="h-3.5 w-3.5 text-[#0284C7]" /> Kabupaten Bogor
               </li>
               <li className="flex items-center gap-2">
                 <MapPin className="h-3.5 w-3.5 text-[#0284C7]" /> Tangerang
@@ -1439,18 +1439,49 @@ function Footer() {
               </li>
             </ul>
 
-            <div className="mt-4 flex gap-2">
-              {[Instagram, Facebook, Send, Youtube].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  aria-label="social"
-                  className="grid h-9 w-9 place-items-center rounded-lg bg-white/10 transition-colors hover:bg-white/20"
-                >
-                  <Icon className="h-4 w-4" />
-                </a>
-              ))}
-            </div>
+          <div className="mt-4 flex gap-2">
+            <a
+              href="https://www.instagram.com/ambulance.jabodetabekcare?igsi=MXZ5dHdrOWh1dDlmbA=="
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram Jabodetabek Care"
+              className="grid h-9 w-9 place-items-center rounded-lg bg-white/10 transition-colors hover:bg-white/20"
+            >
+              <Instagram className="h-4 w-4" />
+            </a>
+
+            <a
+              href="#"
+              aria-label="Facebook"
+              className="grid h-9 w-9 place-items-center rounded-lg bg-white/10 transition-colors hover:bg-white/20"
+            >
+              <Facebook className="h-4 w-4" />
+            </a>
+
+              <a
+              href="https://www.tiktok.com/@ambulance.nauval24jam"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TikTok Jabodetabek Care"
+              className="grid h-9 w-9 place-items-center rounded-lg bg-white/10 transition-colors hover:bg-white/20"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                className="h-4 w-4 fill-current"
+                aria-hidden="true"
+              >
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 1 1-2-2.76V9.4a6.34 6.34 0 1 0 5.45 6.27V8.73a8.16 8.16 0 0 0 4.77 1.52V6.82a4.85 4.85 0 0 1-1-.13Z" />
+              </svg>
+            </a>
+
+            <a
+              href="#"
+              aria-label="YouTube"
+              className="grid h-9 w-9 place-items-center rounded-lg bg-white/10 transition-colors hover:bg-white/20"
+            >
+              <Youtube className="h-4 w-4" />
+            </a>
+          </div>
           </div>
         </div>
       </div>
