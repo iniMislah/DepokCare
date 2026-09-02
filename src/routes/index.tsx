@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import useEmblaCarousel from "embla-carousel-react";
 import { useState } from "react";
 import {
   Phone,
@@ -759,7 +760,7 @@ function Services() {
 }
 
 function Gallery() {
-  const categories = ["Semua", "Armada", "Interior", "Dokumentasi", "Event"];
+  const categories = ["Semua", "Armada", "Interior", "Galeri", "Event"];
   const [selected, setSelected] = useState("Semua");
 
   const galleryItems = [
@@ -794,7 +795,7 @@ function Gallery() {
     {
       id: 5,
       title: "Peti Jenazah",
-      category: "Dokumentasi",
+      category: "Galeri",
       image: "/images/petijenazah.jpg",
       spec: "Penyediaan peti jenazah sesuai kebutuhan keluarga dengan pilihan yang dapat dikonsultasikan terlebih dahulu.",
     },
@@ -808,9 +809,9 @@ function Gallery() {
     {
       id: 7,
       title: "Transport Medis",
-      category: "Dokumentasi",
+      category: "Galeri",
       image: "/images/transportmedis.jpg",
-      spec: "Dokumentasi layanan transport medis untuk pasien dengan pendampingan dan armada yang sesuai kebutuhan.",
+      spec: "Galeri layanan transport medis untuk pasien dengan pendampingan dan armada yang sesuai kebutuhan.",
     },
     {
       id: 8,
@@ -819,11 +820,65 @@ function Gallery() {
       image: "/images/standbyevent.jpg",
       spec: "Ambulance standby untuk mendukung kebutuhan medis pada event, acara perusahaan, komunitas, dan kegiatan publik.",
     },
-  ];
+    {
+    id: 9,
+    title: "Kesiapan Armada Ambulans",
+    category: "Galeri",
+    image: "/images/kesiapan-armada-ambulans.jpg",
+    spec: "Dokumentasi armada Jabodetabek Care yang disiapkan untuk mendukung kebutuhan transportasi medis dan pelayanan pasien.",
+  },
+  {
+    id: 10,
+    title: "Pelayanan ke Fasilitas Kesehatan",
+    category: "Galeri",
+    image: "/images/pelayanan-fasilitas-kesehatan.jpg",
+    spec: "Dokumentasi armada saat mendukung proses antar pasien menuju fasilitas kesehatan sesuai kebutuhan perjalanan medis.",
+  },
+  {
+    id: 11,
+    title: "Fasilitas Transportasi Pasien",
+    category: "Galeri",
+    image: "/images/fasilitas-transportasi-pasien.jpg",
+    spec: "Interior armada dilengkapi stretcher dan fasilitas pendukung untuk membantu kenyamanan serta kebutuhan pasien selama perjalanan.",
+  },
+  {
+    id: 12,
+    title: "Pendampingan Menuju Rumah Sakit",
+    category: "Galeri",
+    image: "/images/pendampingan-menuju-rumah-sakit.jpg",
+    spec: "Dokumentasi pelayanan transportasi pasien menuju rumah sakit dan Instalasi Gawat Darurat dengan armada yang siap operasional.",
+  },
+  {
+    id: 13,
+    title: "Operasional Layanan 24 Jam",
+    category: "Galeri",
+    image: "/images/operasional-layanan-24-jam.jpg",
+    spec: "Armada Jabodetabek Care mendukung kebutuhan layanan transportasi medis pada berbagai waktu sesuai kebutuhan pasien dan keluarga.",
+  },
+  {
+    id: 14,
+    title: "Perjalanan Antar Wilayah",
+    category: "Galeri",
+    image: "/images/perjalanan-antar-wilayah.jpg",
+    spec: "Dokumentasi perjalanan armada dalam melayani kebutuhan transportasi pasien ke berbagai wilayah sesuai permintaan.",
+  },
+  {
+    id: 15,
+    title: "Pelayanan di Area IGD",
+    category: "Galeri",
+    image: "/images/pelayanan-area-igd.jpg",
+    spec: "Dokumentasi armada saat tiba di area Instalasi Gawat Darurat untuk mendukung proses transportasi dan pemindahan pasien.",
+  },
+    ];
 
   const filtered = selected === "Semua" 
     ? galleryItems 
     : galleryItems.filter(item => item.category === selected);
+
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    align: "start",
+  });
 
   return (
     <section id="armada" className="relative mt-20 overflow-hidden px-4 lg:mt-32 lg:px-8">
@@ -838,7 +893,7 @@ function Gallery() {
             Galeri Kegiatan &amp; Fasilitas
           </h2>
           <p className="mt-3 text-[#475569] font-semibold max-w-lg mx-auto">
-            Beberapa dokumentasi armada dan layanan ambulance kami di lapangan.
+            Beberapa Galeri armada dan layanan ambulance kami di lapangan.
           </p>
         </div>
 
@@ -861,32 +916,83 @@ function Gallery() {
           })}
         </div>
 
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((item) => (
-            <div
-              key={item.id}
-              className="overflow-hidden rounded-[1.6rem] border border-[#DCEBFA] bg-white shadow-[0_10px_35px_-12px_oklch(0.55_0.18_250/0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-[#0284C7]/40"
-            >
-              <div className="relative aspect-4/3 overflow-hidden bg-slate-100">
+    <div className="mt-8">
+      {/* Mobile Carousel */}
+    <div className="sm:hidden overflow-hidden" ref={emblaRef}>
+      <div className="flex items-stretch">
+        {filtered.map((item) => (
+          <div
+            key={item.id}
+            className="min-w-0 flex-[0_0_85%] pr-4"
+          >
+            <div className="h-full overflow-hidden rounded-[1.6rem] border border-[#DCEBFA] bg-white shadow-[0_10px_35px_-12px_oklch(0.55_0.18_250/0.08)] flex flex-col">
+
+              <div className="relative aspect-4/3 shrink-0 overflow-hidden bg-slate-100">
                 <img
                   src={item.image}
                   alt={imageAltBySrc[item.image] ?? item.title}
                   loading="lazy"
-                  className="h-full w-full object-cover transition-all duration-500 hover:scale-105"
+                  className="h-full w-full object-cover"
                 />
+
                 <div className="absolute inset-x-0 bottom-0 h-14 bg-[linear-gradient(180deg,transparent_0%,rgba(15,23,42,0.2)_100%)]" />
               </div>
 
-              <div className="p-4 sm:p-4">
-                <span className="inline-flex rounded-full bg-sky-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-sky-700">
+              <div className="flex flex-1 flex-col p-4">
+                <span className="w-fit inline-flex rounded-full bg-sky-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-sky-700">
                   {item.category}
                 </span>
-                <h4 className="mt-3 text-sm font-extrabold text-slate-900 leading-snug">{item.title}</h4>
-                <p className="mt-2 text-[12px] font-medium leading-relaxed text-slate-600">{item.spec}</p>
+
+                <h4 className="mt-3 min-h-[2.5rem] text-sm font-extrabold leading-snug text-slate-900">
+                  {item.title}
+                </h4>
+
+                <p className="mt-2 text-[12px] font-medium leading-relaxed text-slate-600">
+                  {item.spec}
+                </p>
               </div>
+
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+      {/* Tablet & Desktop */}
+      <div className="hidden gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-3">
+        {filtered.map((item) => (
+          <div
+            key={item.id}
+            className="overflow-hidden rounded-[1.6rem] border border-[#DCEBFA] bg-white shadow-[0_10px_35px_-12px_oklch(0.55_0.18_250/0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-[#0284C7]/40"
+          >
+            <div className="relative aspect-4/3 overflow-hidden bg-slate-100">
+              <img
+                src={item.image}
+                alt={imageAltBySrc[item.image] ?? item.title}
+                loading="lazy"
+                className="h-full w-full object-cover transition-all duration-500 hover:scale-105"
+              />
+
+              <div className="absolute inset-x-0 bottom-0 h-14 bg-[linear-gradient(180deg,transparent_0%,rgba(15,23,42,0.2)_100%)]" />
+            </div>
+
+            <div className="p-4">
+              <span className="inline-flex rounded-full bg-sky-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-sky-700">
+                {item.category}
+              </span>
+
+              <h4 className="mt-3 text-sm font-extrabold leading-snug text-slate-900">
+                {item.title}
+              </h4>
+
+              <p className="mt-2 text-[12px] font-medium leading-relaxed text-slate-600">
+                {item.spec}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
       </div>
     </section>
   );
@@ -1090,63 +1196,6 @@ function Testimonials() {
             <div className="mt-6 border-t border-slate-100 pt-4">
               <span className="text-sm font-extrabold text-[#0F172A] transition-colors duration-300 group-hover:text-primary">{t.name}</span>
               <span className="mt-0.5 block text-xs font-semibold text-slate-400">{t.city}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function Drivers() {
-  const drivers = [
-    { name: "Rizky Pratama", age: 32 },
-    { name: "Dedi Saputra", age: 41 },
-    { name: "Fajar Hidayat", age: 29 },
-  ];
-
-  return (
-    <section id="driver" className="mx-auto mt-20 max-w-7xl px-4 lg:mt-32 lg:px-8">
-      <div className="mx-auto max-w-2xl text-center">
-        <span className="inline-block rounded-full bg-primary/10 px-3 py-1.5 text-xs font-bold text-primary tracking-wide">
-          Tim Driver Medis
-        </span>
-        <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-[#0F172A] sm:text-4xl">
-          Berpengalaman &amp; Tersertifikasi
-        </h2>
-      </div>
-      <div className="mt-12 grid gap-6 md:grid-cols-3">
-        {drivers.map((d) => (
-          <div
-            key={d.name}
-            className="group relative overflow-hidden rounded-[1.6rem] border border-[#DCEBFA] bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FBFF_100%)] p-6 shadow-[0_10px_35px_-12px_oklch(0.55_0.18_250/0.08)] transition-all duration-300 hover:-translate-y-1.5 hover:border-[#0284C7]/45 hover:shadow-[0_20px_45px_-14px_oklch(0.55_0.18_250/0.16)]"
-          >
-            <div className="absolute right-0 top-0 h-28 w-28 -translate-y-8 translate-x-8 rounded-full bg-gradient-to-br from-primary/10 to-primary-glow/10 blur-2xl transition-transform duration-500 group-hover:scale-110 pointer-events-none" />
-
-            <div className="relative z-10 flex items-center gap-4">
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-primary-glow text-lg font-extrabold text-white shadow-md transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_8px_20px_-6px_oklch(0.55_0.18_250/0.45)]">
-                {d.name
-                  .split(" ")
-                  .map((s) => s[0])
-                  .slice(0, 2)
-                  .join("")}
-              </div>
-
-              <div>
-                <h3 className="text-base font-extrabold text-[#0F172A] transition-colors duration-300 group-hover:text-primary">{d.name}</h3>
-                <p className="mt-0.5 text-xs font-bold text-slate-400">Driver Medis • {d.age} Tahun</p>
-              </div>
-            </div>
-
-            <div className="relative z-10 mt-6 flex flex-wrap gap-2 border-t border-slate-100 pt-4">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/10 bg-primary/5 px-2.5 py-1 text-[10px] font-bold text-primary">
-                <BadgeCheck className="h-3.5 w-3.5" />
-                Tersertifikasi &amp; Terlatih
-              </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-whatsapp/10 bg-whatsapp/5 px-2.5 py-1 text-[10px] font-bold text-whatsapp">
-                <ShieldCheck className="h-3.5 w-3.5" />
-                Mengutamakan Keselamatan
-              </span>
             </div>
           </div>
         ))}
@@ -1444,7 +1493,6 @@ function Index() {
         <AreaService />
         <BookingProcess />
         <Testimonials />
-        <Drivers />
         <WhyChoose />
         <SectionSpacer />
         <FAQ />
