@@ -8,3 +8,9 @@
 [dev]
   command = "npm run dev"
   port = 8081
+
+[[redirects]]
+  from = "https://jabodetabekcare.netlify.app/*"
+  to = "https://jabodetabekcare.com/:splat"
+  status = 301
+  force = true
